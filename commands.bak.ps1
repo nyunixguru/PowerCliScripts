@@ -36,7 +36,7 @@ Get-VM -Name ipmgmt4.net|Get-NetworkAdapter |Where {$_.NetworkName -eq "VM Netwo
 
 
 #Add a New VM
-New-VM -Name rfdndata1.srv.hcvlny.cv.net `
+New-VM -Name rfdndata1 `
    -Datastore CLD3-RFDN-DS1 `
    -DiskGB 100 `
    -DiskStorageFormat thick `
@@ -45,13 +45,13 @@ New-VM -Name rfdndata1.srv.hcvlny.cv.net `
    -GuestId rhel6_64Guest `
    
 #Start a VM
-   Start-VM -VM  ipmgmt4.hesv.hcvlny.dhg.cv.net -Confirm:$false
+   Start-VM -VM  ipmgmt4  -Confirm:$false
    
 # Add new Hard Disk
-New-HardDisk -CapacityGB 400 -VM rfdndata1.srv.hcvlny.cv.net -Datastore CLD3-RFDN-DS2
+New-HardDisk -CapacityGB 400 -VM rfdndata1 -Datastore CLD3-RFDN-DS2
 
 #Set Boot delay
-$vmm = "ipmgmt4.hesv.hcvlny.dhg.cv.net"
+$vmm = "ipmgmt4."
     $value = "10000"
     #$vm = Get-VM $vmname | Get-View
 	$vm = Get-VM $vmm | Get-View
@@ -65,20 +65,20 @@ $vmm = "ipmgmt4.hesv.hcvlny.dhg.cv.net"
 #Get-VM | Get-CDDrive | Where { $_.IsoPath } | Set-CDDrive -NoMedia -Confirm:$true
 
 
-#Stop-VM rfdnapp1.srv.hcvlny.cv.net
+#Stop-VM rfdnapp1.srv.
 # Can now mount cdrom run mount /dev/cdrom /mnt
-Mount-Tools ipmgmt4.hesv.hcvlny.dhg.cv.net
+Mount-Tools ipmgmt4.
 
-Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3-c4-b8.srv. -User root -Password r00t123
 #Removes CD Drive entirely
-#$cd = Get-CDDrive -VM rfdnapp1.srv.hcvlny.cv.net    
+#$cd = Get-CDDrive -VM rfdnapp1.
 #Remove-CDDrive -CD $cd
 
 #Creates new cd drive device ( if not installed )
-New-CDDrive -VM rfdnapp1.srv.hcvlny.cv.net
+New-CDDrive -VM rfdnapp1.
 
 
-Export-VApp -Destination "d:\ISO_Images" -VM vemd2-ool123.srv.hcvlny.cv.net
+Export-VApp -Destination "d:\ISO_Images" -VM vemd2-ool123.srv.et
 
 # Import a vApp directly into Esxi hhost
 #Import-vApp -Source c:\Images\vdhcptemplate.srv.hcvlny.cv.net\vdhcptemplate.srv.hcvlny.cv.net.ovf -VMHost cld1-c3-b1.srv.hcvlny.cv.net -Name vdhcpred1.srv.hcvlny.cv.net
