@@ -1,12 +1,12 @@
 ﻿# Change this parameter below
 $esx = "10.248.132.183"
 #$host = "snoc2-c5-b1"
-Connect-VIServer -Server $esx -User root -Password r00t123
+Connect-VIServer -Server $esx -User root -Password r
 Write-Host "Configuring Hostname and DNS Settings on $esx" -ForegroundColor Green
 # Change this parameter below
 Get-VMHost | Get-VMHostNetwork | Set-VMHostNetwork -HostName smapp-c7-b8
 Get-VMHost | Get-VMHostNetwork | Set-VMHostNetwork -DnsAddress "167.206.7.3","167.206.1.103"
-Get-VMHost | Get-VMHostNetwork | Set-VMHostNetwork -Domain srv.hcvlny.cv.net -SearchDomain srv.hcvlny.cv.net, cv.net, hcvlny.cv.net
+Get-VMHost | Get-VMHostNetwork | Set-VMHostNetwork -Domain srv.hcv -SearchDomain srv.hcvl, , hcvet
 #Enable SSH
 Write-Host "Enabling SSH on $esx" -ForegroundColor Green
 Get-VMHostService | where {$_.Key -eq "TSM-SSH"} | Set-VMHostService -Policy "On"
@@ -37,8 +37,8 @@ Get-VMHostFirewallException -Name syslog | Set-VMHostFirewallException -Enabled 
 
 #Add Esxi host to Vcenter
 #                                          -Location  Clustername
-#Add-VMHost cld3-c10-b1.srv.hcvlny.cv.net -Location CLD3-HWR -User root -Password r00t123 -force:$true
-#7..8 | Foreach-Object {Add-VMHost cld3-c10-b$_.srv.hcvlny.cv.net -Location CLD3-HWR -User root -Password r00t123 -force:$true}
+#Add-VMHost cld3-c10-b1 -Location CLD3-HWR -User root -Password r00t123 -force:$true
+#7..8 | Foreach-Object {Add-VMHost cld3-c10-b$_.-Location CLD3-HWR -User root -Password r -force:$true}
 
 #Configure SNMP
 $i = 8
