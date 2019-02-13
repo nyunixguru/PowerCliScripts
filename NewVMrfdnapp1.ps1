@@ -1,7 +1,7 @@
 ﻿
-Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3 -User root -Password r
 
-New-VM -Name rfdnapp1.srv.hcvlny.cv.net `
+New-VM -Name rfdna `
    -Datastore CLD3-RFDN-DS1 `
    -DiskGB 120 `
    -DiskStorageFormat thick `
