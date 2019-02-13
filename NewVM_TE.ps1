@@ -1,6 +1,6 @@
-﻿Connect-VIServer -Server 192.168.1.3 -User root -Password r00t123
+﻿Connect-VIServer -Server 192.168.1.3 -User root -Password r
 
-New-VM -Name rfdn.srv.hcvlny.cv.net `
+New-VM -Name rfdn `
    -Datastore Datastore2 `
    -DiskMB 1024 `
    -DiskStorageFormat thick `
