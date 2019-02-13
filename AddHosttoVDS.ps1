@@ -1,5 +1,5 @@
 ﻿#Script to add dvUplinks to vds for new hosts
-#Connect-VIServer -Server vcenterprimary.srv.hcvlny.cv.net -User ddilwort -Password R@dsk1nz
+#Connect-VIServer -Server vcenterprim -User ddilwort -Password 
 
 
 #CLD3-ACCSW1-2.MSF1_dvSwitch
@@ -37,8 +37,8 @@ Start-Sleep -s 20
 CLD3-ACCSW1-2.VSF2_dvSwitch
 for ($i=1; $i -lt 9; $i++)
 {
-Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv.hcvlnyet -VDSwitch "CLD3-ACCSW1-2.VSF2_dvSwitch"
- $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv.hcvlnyet | Get-VMHostNetworkAdapter `
+Add-VDSwitchVMHost -vmhost cld3-c11-b$i. -VDSwitch "CLD3-ACCSW1-2.VSF2_dvSwitch"
+ $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv | Get-VMHostNetworkAdapter `
  -Name vmnic11 -Physical
 
  Add-VDSwitchPhysicalNetworkAdapter `
@@ -66,7 +66,7 @@ CLD3-ACCSW3-4.MSF_dvSwitch
 
 for ($i=1; $i -lt 9; $i++)
 {
-Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv.hcvlnet -VDSwitch "CLD3-ACCSW3-4.MSF_dvSwitch"
+Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv -VDSwitch "CLD3-ACCSW3-4.MSF_dvSwitch"
  $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv.hcet | Get-VMHostNetworkAdapter `
  -Name vmnic6 -Physical
 Start-Sleep -s 2
@@ -94,9 +94,9 @@ CLD3-SWR10-11.SF_dvSwitch
 
 for ($i=1; $i -lt 9; $i++)
 {
-Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv.hcvlny.cv.net -VDSwitch "CLD3-SWR10-11.SF_dvSwitch"
+Add-VDSwitchVMHost -vmhost cld3-c11-b$i.net -VDSwitch "CLD3-SWR10-11.SF_dvSwitch"
 Start-Sleep -s 2
- $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv.hcvnet | Get-VMHostNetworkAdapter `
+ $NetworkAdapter = Get-VMHost -Name cld3-c11-b$iet | Get-VMHostNetworkAdapter `
  -Name vmnic1 -Physical
 Start-Sleep -s 2
  Add-VDSwitchPhysicalNetworkAdapter `
@@ -109,7 +109,7 @@ CLD3-SWR12-13.SF_dvSwitch
 
 for ($i=1; $i -lt 9; $i++)
 {
-Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv.hcvlnet -VDSwitch "CLD3-SWR12-13.SF_dvSwitch"
+Add-VDSwitchVMHost -vmhost cld3-c11-b$i.t -VDSwitch "CLD3-SWR12-13.SF_dvSwitch"
  $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv.hcvlnet | Get-VMHostNetworkAdapter `
  -Name vmnic2 -Physical
 Start-Sleep -s 2
@@ -123,7 +123,7 @@ Start-Sleep -s 2
 CLD3-SWR3-4.SF_dvSwitch
 for ($i=1; $i -lt 9; $i++)
 {
-Add-VDSwitchVMHost -vmhost cld3-c11-b$i.srv.hcvlnet -VDSwitch "CLD3-SWR3-4.SF_dvSwitch"
+Add-VDSwitchVMHost -vmhost cld3-c11-b$i.s -VDSwitch "CLD3-SWR3-4.SF_dvSwitch"
  $NetworkAdapter = Get-VMHost -Name cld3-c11-b$i.srv.hcvlet | Get-VMHostNetworkAdapter `
  -Name vmnic5 -Physical
 Start-Sleep -s 2
