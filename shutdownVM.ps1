@@ -1,6 +1,6 @@
 ﻿
 
-Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3-c -User root -Password r00
 
 
-Start-VM -VM  rfdn.srv.hcvlny.cv.net -Kill -Confirm:$false
+Start-VM -VM  rfd -Kill -Confirm:$false
