@@ -1,4 +1,4 @@
-﻿Connect-VIServer -Server cld1-c3  -User root -Password r00t123
+﻿Connect-VIServer -Server cld1-c3  -User root -Password r
 
 Get-VMHostStorage -RescanAllHba -RescanVmfs
 Get-VMHostStorage
