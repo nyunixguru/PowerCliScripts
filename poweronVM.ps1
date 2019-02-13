@@ -1,8 +1,8 @@
 ﻿
 
-#Connect-VIServer -Server cld2-vbprod-c1-b6.vsf5-2.hcvlny.dhg.cv.net -User root -Password V1rtu@1c3!
+#Connect-VIServer -Server cld2-vbprod-c1-b6. -User root -Password V
 
-Connect-VIServer -Server cld3-c5-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3-c5- -User root -Password r0
 #Get-VM
-Start-VM -VM  ipmgmt4.hesv.hcvlny.dhg.cv.net -Confirm:$false
-#Mount-Tools vdhcpred2.srv.hcvlny.cv.net
+Start-VM -VM  ipmgmt4.hesv -Confirm:$false
+#Mount-Tools vdhcpred2.sr
