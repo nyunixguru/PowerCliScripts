@@ -1,27 +1,27 @@
 ﻿Connect to host
-Connect-VIServer -Server cld3-c5-b8.srv.hcvlny.cv.net -User root -Password r00t123
-Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3- -User root -Password r00t123
+Connect-VIServer -Server cld3-c4-b8 -User root -Password r00t123
 Connect-VIServer -Server 192.168.1.3 -User root -Password r00t123
-#Connect-VIServer -Server cld2-vbprod-c1-b5.vsf5-2.hcvlny.dhg.cv.net -User root -Password V1rtu@1c3!
+#Connect-VIServer -Server cld2-vbprod-c -User root -Password V1
 
 Start VM
-Start-VM -VM  rfdn.srv.hcvlny.cv.net -Kill -Confirm:$false
+Start-VM -VM  rfdn -Kill -Confirm:$false
 
 Change Memory size
-#Stop-VM -VM ipmgmt3.hesv.hcvlny.dhg.cv.net
-Set-VM -VM ipmgmt3.hesv.hcvlny.dhg.cv.net  -MemoryGB 20
+#Stop-VM -VM ipmgmt3.
+Set-VM -VM ipmgmt3.hesv  -MemoryGB 20
 
 Mount Vmware Tools
-Start-VM -VM  ipmgmt4.hesv.hcvlny.dhg.cv.net -Confirm:$false
-#Mount-Tools vdhcpred2.srv.hcvlny.cv.net
+Start-VM -VM  ipmgmt4 -Confirm:$false
+#Mount-Tools vdhc 
 
 Remove VM
-Stop-VM -VM ipmgmt4.hesv.hcvlny.dhg.cv.net
-Remove-VM -VM   ipmgmt4.hesv.hcvlny.dhg.cv.net -DeletePermanently
+Stop-VM -VM ipmgmt4.
+Remove-VM -VM   ipmgmt4. -DeletePermanently
 #Remove-Inventory -Item  WebServerTest -Server 192.168.1.3
 
 Rename Datastore
-onnect-VIServer -Server cld1-c3-b1.srv.hcvlny.cv.net -User root -Password r00t123
+onnect-VIServer -Server cld1-c3-b1. -User root -Password r00t123
 Get-Datastore -Name CLD1-HCVLNY-OS011 | Set-Datastore -Name CLD1-HCVLNY-OS11
 
 
@@ -30,9 +30,9 @@ Get-Datastore -Name CLD1-HCVLNY-OS011 | Set-Datastore -Name CLD1-HCVLNY-OS11
 #Remove from inventory?
  (Get-View -ViewType VirtualMachine) |?{$_.Runtime.ConnectionState -eq "invalid" -or $_.Runtime.ConnectionState -eq "inaccessible"} |%{$_.reload()}
 
-Connect-VIServer -Server cld3-c3-b8.srv.hcvlny.cv.net -User root -Password r00t123
-Get-VM -Name ipmgmt4.hesv.hcvlny.dhg.cv.net | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName CLD3-VLAN105_dvPortGroup
-Get-VM -Name ipmgmt4.hesv.hcvlny.dhg.cv.net|Get-NetworkAdapter |Where {$_.NetworkName -eq "VM Network" } |Set-NetworkAdapter -NetworkName "CLD3-VLAN105_dvPortGroup" -Confirm:$false
+Connect-VIServer -Server cld3-c3-b8. -User root -Password r00t123
+Get-VM -Name ipmgmt4.net | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName CLD3-VLAN105_dvPortGroup
+Get-VM -Name ipmgmt4.net|Get-NetworkAdapter |Where {$_.NetworkName -eq "VM Network" } |Set-NetworkAdapter -NetworkName "CLD3-VLAN105_dvPortGroup" -Confirm:$false
 
 
 #Add a New VM
