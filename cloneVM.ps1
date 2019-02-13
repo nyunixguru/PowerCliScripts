@@ -1,2 +1,2 @@
-﻿Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+﻿Connect-VIServer -Server cld3  -User root -Password 
 #New-VM -VM "$clonesourcevm" -VMHost "$clonehost" -Name $clonename -Datastore "$cloneds" -Location "$clonefolder" -ErrorAction Stop;
