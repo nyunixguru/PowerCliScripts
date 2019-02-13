@@ -1,7 +1,7 @@
 ﻿
-Connect-VIServer -Server cld3-c5-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld3- -User root -Password r00
 
- $vmm = "ipmgmt4.hesv.hcvlny.dhg.cv.net"
+ $vmm = "ipmgmt4t"
 
     
     $value = "10000"
