@@ -1,4 +1,4 @@
-﻿Connect-VIServer -Server vcenterprimary.srv.hcvlny.cv.net -User ddilwort -Password R@dsk1nz
+﻿Connect-VIServer -Server vcenterprim-User ddilwort -Password 
 $report = @()
 # $clusterName = "MyCluster"  $clusterName = "*"
 $clusterName = "CLD3-HWR"
