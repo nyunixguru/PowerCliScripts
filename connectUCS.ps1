@@ -1,5 +1,5 @@
 ﻿# Define UCS connection details
-$ucsSysName = "cld3-fi1.srv.hcvlny.cv.net"
+$ucsSysName = "cld3-fi1.srvnet"
 $ucsUserName = "admin"
 $ucsPassword = "ciscoUCS123"
 
