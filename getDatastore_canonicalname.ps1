@@ -1,4 +1,4 @@
-﻿Connect-VIServer -Server cld1-c1-b1.srv.whplny.cv.net -User root -Password r00t123
+﻿Connect-VIServer -Server cld1-c1-  -User root -Password r00t123
 
 
 #Get-ScsiLun -LunType disk | select lunDatastoreName, CanonicalName, CapacityMB | sort -Property lunDatastoreName
