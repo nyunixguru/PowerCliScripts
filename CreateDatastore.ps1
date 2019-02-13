@@ -1,5 +1,5 @@
 ﻿$ Create DS on one host in the Cluster
-Connect-VIServer -Server cld1-c1-b1.srv.whplny.cv.net -User root -Password r00t123
+Connect-VIServer -Server cld1-c1-b1.-User root -Password r00t123
 Get-VMHostStorage -RescanAllHba -RescanVmfs
 # Determine naa path of new LUN via Vcenter  (capture output before) or getdatastore canonical name ps script
 #New-Datastore -VMHost $host -Name Datastore -Path $scsiLun.CanonicalName -Vmfs -FileSystemVersion 3
