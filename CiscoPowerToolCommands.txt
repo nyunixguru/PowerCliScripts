@@ -1,0 +1,82 @@
+#Remove VLAN 99
+Get-UcsLanCloud | Get-UcsVlan -Name "99" -LimitScope | Remove-UcsVlan
+
+
+#Create Management IP Pool
+Get-UcsOrg -Level root | Get-UcsIpPool -Name "ext-mgmt" -LimitScope | Add-UcsIpPoolBlock -DefGw "192.168.1.8" -From "192.168.1.4" -To "192.16
+8.1.5"
+#Remove  Management IP Pool
+Get-UcsOrg -Level root | Get-UcsIpPool -Name "ext-mgmt" -LimitScope | Get-UcsIpPoolBlock -From "192.168.1.4" -To "192.168.1.5" | Remove-UcsIp
+PoolBlock
+
+# Add VLAN99
+Get-UcsLanCloud | Add-UcsVlan -DefaultNet "no" -Id 99 -Name "ACCSW_VLAN99" -PubNwName "" -Sharing "none"
+#Remove VLAN 99
+Get-UcsLanCloud | Get-UcsVlan -Name "99" -LimitScope | Remove-UcsVlan
+
+
+
+#Add vnic template
+Start-UcsTransaction
+$mo = Get-UcsOrg -Level root  | Add-UcsVnicTemplate -Descr "test" -IdentPoolName "ENG1-MAC_POOL" -Mtu 1500 -Name "test" -NwCtrlPolicyName "" 
+-PinToGroupName "accsw1-2.msf.bp" -QosPolicyName "" -StatsPolicyName "default" -SwitchId "A" -TemplType "initial-template"
+$mo_1 = $mo | Add-UcsVnicInterface -ModifyPresent -DefaultNet "no" -Name "ACCSW1-MSF-BTHPNY_VLAN72-APP"
+Complete-UcsTransaction
+
+
+
+#Add updating vnic template ( adapter vm )
+Start-UcsTransaction
+$mo = Get-UcsOrg -Level root  | Add-UcsVnicTemplate -Descr "test1" -IdentPoolName "ENG1-MAC_POOL" -Mtu 1500 -Name "test1" -NwCtrlPolicyName "
+default" -PinToGroupName "accsw1-2.msf.bp" -QosPolicyName "" -StatsPolicyName "default" -SwitchId "A" -Target "adaptor","vm" -TemplType "upda
+ting-template"
+$mo_1 = $mo | Add-UcsVnicInterface -ModifyPresent -DefaultNet "no" -Name "ACCSW1-MSF-BTHPNY_VLAN72-APP"
+Complete-UcsTransaction
+
+
+
+
+#Remove vnic template
+Get-UcsOrg -Level root | Get-UcsVnicTemplate -Name "test" -LimitScope | Remove-UcsVnicTemplate
+
+
+#Create MAC Pool
+Start-UcsTransaction
+$mo = Get-UcsOrg -Level root  | Add-UcsMacPool -Descr "test" -Name "test_mac_pool"
+$mo_1 = $mo | Add-UcsMacMemberBlock -From "00:25:B5:00:00:01" -To "00:25:B5:00:00:01"
+Complete-UcsTransaction
+
+#Remove MAC Pool
+Get-UcsOrg -Level root | Get-UcsMacPool -Name "test_mac_pool" -LimitScope | Remove-UcsMacPool
+
+#Create vHBA Template
+Start-UcsTransaction
+$mo = Get-UcsOrg -Level root  | Add-UcsVhbaTemplate -Descr "" -IdentPoolName "ENG1-WWPN_POOL" -MaxDataFieldSize 2048 -Name "test" -PinToGroup
+Name "ENG1-VSAN7-SW1" -QosPolicyName "" -StatsPolicyName "default" -SwitchId "A" -TemplType "updating-template"
+$mo_1 = $mo | Add-UcsVhbaInterface -ModifyPresent -Name "VSAN7"
+Complete-UcsTransaction
+
+#Remove vhba template
+Get-UcsOrg -Level root | Get-UcsVhbaTemplate -Name "test" -LimitScope | Remove-UcsVhbaTemplate
+
+
+ConvertTo-UcsCmdlet
+#Remove Pin Group
+Get-UcsEthernetPinGroup -Name "DSTSWR3-4.MSF" | Remove-UcsEthernetPinGroup
+
+
+#Add Pin Group and Port Channel 12 to it
+Start-UcsTransaction
+$mo = Add-UcsEthernetPinGroup -Descr "RFDN Tools VLAN" -Name "dstrswr3-4.msf" -PolicyOwner "local"
+$mo_1 = $mo | Add-UcsEthernetPinGroupTarget -EpDn "fabric/lan/A/pc-12" -FabricId "A"
+$mo_2 = $mo | Add-UcsEthernetPinGroupTarget -EpDn "fabric/lan/B/pc-12" -FabricId "B"
+Complete-UcsTransaction
+
+
+
+
+#Remove Port Channels
+Get-UcsFiLanCloud -Id "A" | Get-UcsUplinkPortChannel -PortId 12 | Remove-UcsUplinkPortChannel
+Get-UcsFiLanCloud -Id "B" | Get-UcsUplinkPortChannel -PortId 12 | Remove-UcsUplinkPortChannel
+
+

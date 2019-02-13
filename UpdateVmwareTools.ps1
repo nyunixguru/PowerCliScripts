@@ -1,0 +1,2 @@
+﻿Connect-VIServer -Server cld3-c4-b8.srv.hcvlny.cv.net -User root -Password r00t123
+Update-Tools rfdn.srv.hcvlny.cv.net

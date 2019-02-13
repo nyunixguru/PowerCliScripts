@@ -1,0 +1,28 @@
+$esxName = <ESX-hostname>
+$esxImpl = Get-VMHost -Name $esxName
+$trapDestination = <mgmt-hostname>
+$trapCommunity = "public"
+
+# Connect to the ESX server
+$esxConnect = Connect-VIServer -Server $esxName -Credential (Get-Credential)
+
+# Get snmp object
+$snmpObj = Get-VMHostSnmp -Server $defaultViServer
+
+# Clear snmp configuration
+Set-VMHostSnmp -HostSnmp $snmpObj -ReadOnlyCommunity @() -RemoveTarget $snmpObj.TrapTargets[0]
+
+# Enable snmp
+Set-VMHostSnmp -HostSnmp $snmpObj -Enabled:$true
+
+# Set read-only community
+Set-VMHostSnmp -HostSnmp $snmpObj -ReadOnlyCommunity "public"
+
+# Define trap target
+Set-VMHostSnmp -HostSnmp $snmpObj -AddTarget -TargetCommunity $trapCommunity -TargetHost $trapDestination
+
+# Test snmp
+Test-VMHostSnmp -HostSnmp $snmpObj
+
+# Disconnect from ESX server
+Disconnect-VIServer -Server $esxConnect -Confirm:$fals

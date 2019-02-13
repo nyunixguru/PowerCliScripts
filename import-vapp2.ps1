@@ -1,0 +1,3 @@
+﻿Connect-VIServer -Server vcenterprimary.srv.hcvlny.cv.net -User ddilwort -Password R@dsk1nz
+#Import-vApp -Source "d:\ISO_Images\vdhcphsd13.srv.prnynj.cv.net\vdhcphsd13.srv.prnynj.cv.net.ovf" -Name vdhcphsd14.srv.prnynj.cv.net -VMHost cld1-c1-b2.srv.prnynj.cv.net -Datastore cld1-prnynj-os08
+New-VM -Name vdhcphsd20.srv.prnynj.cv.net -VM  vdhcphsd14.srv.prnynj.cv.net -Datastore CLD1-PRNYNJ-OS09 -VMHost cld1-c2-b5.srv.prnynj.cv.net

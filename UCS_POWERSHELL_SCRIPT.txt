@@ -1,0 +1,42 @@
+function SendUCScmd ([string]$ucsCMD){
+$request = [System.Net.HttpWebRequest] [System.Net.HttpWebRequest]::Create($url)
+$request.Method = "POST"
+$request.ContentType = "text/xml"
+$sendData = new-object System.IO.StreamWriter($request.GetRequestStream())
+$sendData.Write($ucsCMD)
+$sendData.Close()
+$response = $request.GetResponse()
+$sr = new-object System.IO.StreamReader($response.GetResponseStream())
+$xml = [xml] $sr.ReadToEnd()
+	$isLogin = $ucsCMD.CompareTo($aaaLogin)
+		If ($isLogin = 1) {
+			$outCookie = $xml.aaaLogin.outCookie
+			return $outCookie
+		}
+}
+
+$url = "http://x.x.x.x/nuova"
+$ucsmLogin = "ucsmLogin"
+$ucsmPass = "ucsmPass"
+$scpPass = "scpPass"
+
+#Login Process
+$aaaLogin = '"<aaaLogin inName="' + $ucsmLogin + '" inPassword="' + $ucsmPass+ '"/>"'
+$outCookie = SendUCScmd ($aaaLogin)
+
+#Start ucs all configuration backup
+$ucsAllcmd = '"<configConfMo inHierarchical="true" cookie="' + $outCookie + '"><inConfig><mgmtBackup adminState="enabled" dn="sys/backup-ucs-allbackup.webservices.nrt" pwd="' + $scpPass + '"/></inConfig></configConfMo>" -k ' + $url
+SendUCScmd ($ucsAllcmd)
+
+$ucsFullcmd = '"<configConfMo inHierarchical="true" cookie="' + $outCookie + '"><inConfig><mgmtBackup adminState="enabled" dn="sys/backup-ucs-fullbackup.webservices.nrt" pwd="' + $scpPass + '"/></inConfig></configConfMo>" -k ' + $url
+SendUCScmd ($ucsFullcmd)
+
+$ucsLogicalcmd = '"<configConfMo inHierarchical="true" cookie="' + $outCookie + '"><inConfig><mgmtBackup adminState="enabled" dn="sys/backup-ucs-logicalbackup.webservices.nrt" pwd="' + $scpPass + '"/></inConfig></configConfMo>" -k ' + $url
+SendUCScmd ($ucsLogicalcmd)
+
+$ucsSystemcmd = '"<configConfMo inHierarchical="true" cookie="' + $outCookie + '"><inConfig><mgmtBackup adminState="enabled" dn="sys/backup-ucs-systembackup.webservices.nrt" pwd="' + $scpPass + '"/></inConfig></configConfMo>" -k ' + $url
+SendUCScmd ($ucsSystemcmd)
+
+#Logout Process
+$aaaLogout = '<aaaLogout inCookie="' + $outCookie + '"/>'
+SendUCScmd ($aaaLogout)
