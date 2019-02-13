@@ -1,2 +1,0 @@
-﻿Connect-VIServer -Server snoc2-c5-b1.srv.hcvlny.cv.net -User root -Password r00t123
-Import-vApp -Source 'd:\ISO_IMAGES\NOC_Template.80GB\NOC_Template.80GB.ovf' -name  taddm1.mon.grn.hcvlny.cv.net-vmhost snoc2-c5-b1.srv.hcvlny.cv.net -Datastore snoc2_sw_os10
