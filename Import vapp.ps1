@@ -1,7 +1,7 @@
 ﻿
-Connect-VIServer cld1-c4-b1.srv.hcvlny.cv.net -User root -Password r00t123
-Import-vApp -VMhost  cld1-c4-b1.srv.hcvlny.cv.net -Source "c:\vdhcphsd.srv.whplny.cv.net\vdhcphsd.srv.whplny.cv.net.ovf" -Name vdhcphsd14.srv.hcvlny.cv.net `
+Connect-VIServer cld1-c4-User root -Password r
+Import-vApp -VMhost  cld1-c4- -Source "c:\vdhcphsd.srv.whplny.cv.net\vdhcp.net.ovf" -Name vdhcphsd14et `
 -Datastore CLD1-HCVLNY-OS13
-#Connect-VIServer emd2-c10-b3.srv.hcvlny.cv.net -User root -Password r00t123
-#Import-vApp -VMhost  cld1-c1-b4.srv.prnynj.cv.net -Source  "d:\ISO_IMAGES\vdhcptemplate.srv.hcvlny.cv.net\vdhcptemplate.srv.hcvlny.cv.net.ovf" -Name  vemd2-oolstg004.srv.hcvlny.cv.net `
+#Connect-VIServer emd2 -User root -Password 
+#Import-vApp -VMhost  cld1-c1-b4net -Source  "d:\ISO_IMAGES\vdhcptemnet\vdhcptemplt.ovf" -Name  vemd2-oolstg004net `
 #-Datastore EMD2-OS17
