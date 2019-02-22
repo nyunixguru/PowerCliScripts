@@ -45,17 +45,17 @@ $i = 8
 
 # Create loop
 Write-Host "Configuring SNMP Servers on $esx" -ForegroundColor Green
-$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 --show"
+$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.sr  --username root --password r00t123 --show"
 Invoke-expression $expression
-$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 -c 'public,vmware'"
+$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv  --username root --password r00t123 -c 'public,vmware'"
 Invoke-expression $expression
-$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 -t '172.16.30.111@162/public,172.16.30.111@162/vmware'"
+$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcv --username root --password r00t123 -t '172.16.30.111@162/public,172.16.30.111@162/vmware'"
 Invoke-expression $expression
- $expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 -p 161"
+ $expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvl --username root --password r00t123 -p 161"
 Invoke-expression $expression
-$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 --enable"
+$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvln --username root --password r00t123 --enable"
 Invoke-expression $expression
-$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvlny.cv.net --username root --password r00t123 --show"
+$expression = "perl ""C:\Program Files (x86)\VMware\VMware vSphere CLI\bin\vicfg-snmp.pl"" --server smapp-c7-b$i.srv.hcvl  --username root --password r00t123 --show"
 Invoke-expression $expression
 
 #Configure Vmotion IP
